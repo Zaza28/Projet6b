@@ -35,3 +35,37 @@ const displayWorks = (works) => {
 };
 
 //partie création des catégories :
+
+const getCategories = () => {
+  fetch("http://localhost:5678/api/categories")
+  .then((response)=>response.json())
+  .then ((data)=>{
+    const category = data;
+    displayCategories(category);
+  })
+  .catch((e) => {
+    console.log("erreur backend");
+  });
+}
+
+const displayCategories = (category) => {
+   const categoryBtns = document.querySelector(".categoryBtns");
+   categoryBtns.innerHTML = "";
+
+    let firstBtn = document.createElement("button");
+    firstBtn.textContent = "Tous";
+    categoryBtns.appendChild(firstBtn);
+
+    category.forEach((cat)=>{
+
+    let categoryName = cat.name;
+    let categoryId = cat.id;
+
+    let buttons = document.createElement("button");
+    buttons.textContent = categoryName;
+
+    categoryBtns.appendChild(buttons);
+
+  })
+
+}

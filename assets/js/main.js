@@ -7,6 +7,9 @@ getWorks();
 
 //partie création des catégories :
 
+let category = [];
+
+getCategories();
 
 
 
