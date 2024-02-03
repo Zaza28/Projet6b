@@ -18,6 +18,7 @@ const displayWorks = (works) => {
   works.forEach((work) => {
     let imgUrl = work.imageUrl;
     let imgTitle = work.title;
+    let imgId = work.id;
 
     let figure = document.createElement("figure");
 
@@ -38,34 +39,37 @@ const displayWorks = (works) => {
 
 const getCategories = () => {
   fetch("http://localhost:5678/api/categories")
-  .then((response)=>response.json())
-  .then ((data)=>{
-    const category = data;
-    displayCategories(category);
-  })
-  .catch((e) => {
-    console.log("erreur backend");
-  });
-}
+    .then((response) => response.json())
+    .then((data) => {
+      const category = data;
+      displayCategories(category);
+    });
+};
 
 const displayCategories = (category) => {
-   const categoryBtns = document.querySelector(".categoryBtns");
-   categoryBtns.innerHTML = "";
+  categoryBtns.innerHTML = "";
 
-    let firstBtn = document.createElement("button");
-    firstBtn.textContent = "Tous";
-    categoryBtns.appendChild(firstBtn);
+  let firstBtn = document.createElement("button");
+  firstBtn.textContent = "Tous";
+  categoryBtns.appendChild(firstBtn);
 
-    category.forEach((cat)=>{
+  firstBtn.addEventListener("click", () => {
+    getWorks();
+  });
 
+  category.forEach((cat) => {
     let categoryName = cat.name;
     let categoryId = cat.id;
 
     let buttons = document.createElement("button");
     buttons.textContent = categoryName;
-
     categoryBtns.appendChild(buttons);
 
-  })
-
-}
+    buttons.addEventListener("click", () => {
+      const worksOfCategory = works.filter(
+        (work) => work.categoryId === categoryId
+      );
+      displayWorks(worksOfCategory);
+    });
+  });
+};

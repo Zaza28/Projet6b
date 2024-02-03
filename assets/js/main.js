@@ -11,6 +11,9 @@ let category = [];
 
 getCategories();
 
+const categoryBtns = document.querySelector(".categoryBtns");
+
+
 
 
 
