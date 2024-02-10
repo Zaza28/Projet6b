@@ -18,7 +18,6 @@ const displayWorks = (works) => {
   works.forEach((work) => {
     let imgUrl = work.imageUrl;
     let imgTitle = work.title;
-    let imgId = work.id;
 
     let figure = document.createElement("figure");
 
@@ -47,6 +46,7 @@ const getCategories = () => {
 };
 
 const displayCategories = (category) => {
+  const categoryBtns = document.querySelector(".categoryBtns");
   categoryBtns.innerHTML = "";
 
   let firstBtn = document.createElement("button");
@@ -66,10 +66,91 @@ const displayCategories = (category) => {
     categoryBtns.appendChild(buttons);
 
     buttons.addEventListener("click", () => {
-      const worksOfCategory = works.filter(
-        (work) => work.categoryId === categoryId
-      );
+      const worksOfCategory = works.filter((work) => {
+        return work.categoryId === categoryId;
+      });
+
       displayWorks(worksOfCategory);
     });
   });
 };
+getWorks();
+getCategories();
+
+
+//page de connexion :
+
+const getlogin = () => {
+  const form = document.querySelector("#form_login");
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+
+    const loginInfo = {
+      email: event.target.querySelector("[name=email_login]").value,
+      password: event.target.querySelector("[name=password]").value,
+    };
+
+    const infoUser = JSON.stringify(loginInfo);
+
+    fetch("http://localhost:5678/api/users/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: infoUser,
+    });
+  });
+};
+
+const verifyLogin = (login) => {
+
+  const baliseEmail = document.querySelector("#email_login");
+  baliseEmail.addEventListener("charge", function (event){
+    const valeurEmail = event.targer.value;
+    if (valeurEmail===""){
+      console.log ("vide");
+    }else{
+      console.log ("rempli");
+    }
+  })
+
+
+};
+
+
+
+
+//Création de la fenêtre modale :
+
+// const DisplayModal = () => {
+// portfolio.innerHTML= "";
+
+// let button = document.createElement("button");
+// button.textContent = "Modifier";
+// portfolio.appendChild(button);
+
+// let myModal = document.createElement("div");
+// myModal.classList.add("modal");
+// portfolio.appendChild(myModal);
+// myModal.textContent ="Contenu de la fenêtre modale";
+
+// let modal = document.querySelector(".modal");
+// let modifBtn = document.querySelector("#portfolio button");
+
+// modifBtn.addEventListener("click", ()=>{
+//   modal.style.display = "block";
+//   console.log("Button clicked!");
+// });
+// modal.addEventListener("click", (event) => {
+
+// });
+
+// }
+
+// button pour supprimer des travaux :
+
+// const btnSuppr = document.querySelector(".supprimer");
+// btnSuppr.addEventListener("click", function (){
+//   window.localStorage.removeItem(works);
+// })
+// let getItems = window.localStorage.getItem(works);
+// window.localStorage.setItem(works);
