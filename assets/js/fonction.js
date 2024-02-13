@@ -76,46 +76,11 @@ const displayCategories = (category) => {
 };
 getWorks();
 getCategories();
+// user connected 
 
+const isLogin = ()=> {
 
-//page de connexion :
-
-const getlogin = () => {
-  const form = document.querySelector("#form_login");
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-
-    const loginInfo = {
-      email: event.target.querySelector("[name=email_login]").value,
-      password: event.target.querySelector("[name=password]").value,
-    };
-
-    const infoUser = JSON.stringify(loginInfo);
-
-    fetch("http://localhost:5678/api/users/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: infoUser,
-    });
-  });
-};
-
-const verifyLogin = (login) => {
-
-  const baliseEmail = document.querySelector("#email_login");
-  baliseEmail.addEventListener("charge", function (event){
-    const valeurEmail = event.targer.value;
-    if (valeurEmail===""){
-      console.log ("vide");
-    }else{
-      console.log ("rempli");
-    }
-  })
-
-
-};
-
+}
 
 
 

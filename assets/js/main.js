@@ -9,9 +9,7 @@ let category = [];
 
 
 
-//page de connexion :
 
-getlogin();
 
 
 
