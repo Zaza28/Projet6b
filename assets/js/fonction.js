@@ -52,6 +52,7 @@ const displayCategories = (category) => {
   let firstBtn = document.createElement("button");
   firstBtn.textContent = "Tous";
   firstBtn.classList.add("button");
+  firstBtn.classList.add("button_actif");
   categoryBtns.appendChild(firstBtn);
 
   firstBtn.addEventListener("click", () => {
@@ -65,13 +66,12 @@ const displayCategories = (category) => {
     let buttons = document.createElement("button");
     buttons.textContent = categoryName;
     categoryBtns.appendChild(buttons);
- buttons.classList.add("button");
+    buttons.classList.add("button");
 
     buttons.addEventListener("click", () => {
       const worksOfCategory = works.filter((work) => {
         return work.categoryId === categoryId;
       });
-
       displayWorks(worksOfCategory);
     });
   });
@@ -79,15 +79,9 @@ const displayCategories = (category) => {
 getWorks();
 getCategories();
 
+// user connected
 
-
-// user connected 
-
-const isLogin = ()=> {
-
-}
-
-
+const isLogin = () => {};
 
 //Création de la fenêtre modale :
 

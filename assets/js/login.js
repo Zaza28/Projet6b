@@ -35,7 +35,8 @@ connectBtn.addEventListener("click", function () {
     });
 });
 
-const isLogin = ()=>{
-  return sessionStorage.getItem("token")? true :false;
-  
-}
+//vérifie si l'user est bien connecter pour permettre d'afficher 
+//les éléments de connexions :
+const isLogin = () => {
+  return sessionStorage.getItem("token") ? true : false;
+};
