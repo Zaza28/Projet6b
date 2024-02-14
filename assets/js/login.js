@@ -2,6 +2,12 @@
 
 const connectBtn = document.querySelector("#connectBtn");
 connectBtn.addEventListener("click", function () {
+
+//condition si email vide ou password si pas renseigné 
+//on ne récupère pas le fetch
+
+
+
   fetch("http://localhost:5678/api/users/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -19,9 +25,7 @@ connectBtn.addEventListener("click", function () {
         const token = sessionStorage.getItem("token", data.token);
         console.log("token récupéré", token);
 
-        //remplir les champs du formulaire avec les données de l'user :
-        document.getElementById("email_login").value = data.userId;
-        document.getElementById("password").value = "";
+       
 
         //renvoie vers la page principale une fois la connexion réussit :
         window.location.href = "./";
@@ -37,6 +41,4 @@ connectBtn.addEventListener("click", function () {
 
 //vérifie si l'user est bien connecter pour permettre d'afficher 
 //les éléments de connexions :
-const isLogin = () => {
-  return sessionStorage.getItem("token") ? true : false;
-};
+

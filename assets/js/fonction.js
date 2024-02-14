@@ -81,8 +81,15 @@ getCategories();
 
 // user connected
 
-const isLogin = () => {};
+const isLogin = () => {
+  return sessionStorage.getItem("token") ? true : false;
+};
 
+const logOut = () => {
+ return sessionStorage.clear ();
+ window.location.href = "./";
+
+};
 //Création de la fenêtre modale :
 
 // const DisplayModal = () => {
