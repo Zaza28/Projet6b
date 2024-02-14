@@ -51,6 +51,7 @@ const displayCategories = (category) => {
 
   let firstBtn = document.createElement("button");
   firstBtn.textContent = "Tous";
+  firstBtn.classList.add("button");
   categoryBtns.appendChild(firstBtn);
 
   firstBtn.addEventListener("click", () => {
@@ -64,6 +65,7 @@ const displayCategories = (category) => {
     let buttons = document.createElement("button");
     buttons.textContent = categoryName;
     categoryBtns.appendChild(buttons);
+ buttons.classList.add("button");
 
     buttons.addEventListener("click", () => {
       const worksOfCategory = works.filter((work) => {
@@ -76,6 +78,9 @@ const displayCategories = (category) => {
 };
 getWorks();
 getCategories();
+
+
+
 // user connected 
 
 const isLogin = ()=> {
