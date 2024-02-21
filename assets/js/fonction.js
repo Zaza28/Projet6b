@@ -42,6 +42,7 @@ const getCategories = () => {
     .then((data) => {
       const category = data;
       displayCategories(category);
+      displayWorksInModal(works);
     });
 };
 
@@ -84,44 +85,57 @@ getCategories();
 const isLogin = () => {
   return sessionStorage.getItem("token") ? true : false;
 };
-
+ 
 const logOut = () => {
  return sessionStorage.clear ();
  window.location.href = "./";
 
 };
-//Création de la fenêtre modale :
 
-// const DisplayModal = () => {
-// portfolio.innerHTML= "";
+// fonction pour afficher les travaux dans la modale :
 
-// let button = document.createElement("button");
-// button.textContent = "Modifier";
-// portfolio.appendChild(button);
+const displayWorksInModal = (works) => {
+  const modaleGallery = document.getElementById("modale-gallery");
+  
+modaleGallery.innerHTML ="";
+works.forEach((work) => {
+  let imgUrl = work.imageUrl;
+  let imgTitle = work.title;
 
-// let myModal = document.createElement("div");
-// myModal.classList.add("modal");
-// portfolio.appendChild(myModal);
-// myModal.textContent ="Contenu de la fenêtre modale";
+  let image = document.createElement("img");
+  image.setAttribute("src", imgUrl);
+  image.setAttribute("alt", imgTitle);
+ //ajout du style aux images ::
+  image.classList.add("image");
+  // Append image de modale-gallery
+  modaleGallery.appendChild(image);
+ 
+});
 
-// let modal = document.querySelector(".modal");
-// let modifBtn = document.querySelector("#portfolio button");
+};
 
-// modifBtn.addEventListener("click", ()=>{
-//   modal.style.display = "block";
-//   console.log("Button clicked!");
-// });
-// modal.addEventListener("click", (event) => {
+//supprimer les travaux depuis l'api :
+const deleteImg = () => {
+  fetch("http://localhost:5678/api/works/${imageId}",{
+  method: "DELETE",
+  headers: { "Content-Type": "application/json" },
+})
+.then((response) => response.json())
+.then(data =>{
+  console.log ("image supprimer", data);
 
-// });
+})
+.catch(error => {
+  console.error('Erreur suppression', error);
+});
+}
+// écoute pour supprimer une img en cliquant l'icone bin : 
+const remove = document.querySelector(".fa-trash-can");
+remove.addEventListener("click", ()=>{
+  const getToken = window.sessionStorage.getItem("token");
+  window.sessionStorage.removeItem("imageUrl");
+  console.log("icon clicked");
 
-// }
+});
 
-// button pour supprimer des travaux :
-
-// const btnSuppr = document.querySelector(".supprimer");
-// btnSuppr.addEventListener("click", function (){
-//   window.localStorage.removeItem(works);
-// })
-// let getItems = window.localStorage.getItem(works);
-// window.localStorage.setItem(works);
+deleteImg();

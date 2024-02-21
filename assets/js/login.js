@@ -1,12 +1,12 @@
 //page de connexion :
 
 const connectBtn = document.querySelector("#connectBtn");
+//récupère le token : 
+
 connectBtn.addEventListener("click", function () {
 
-//condition si email vide ou password si pas renseigné 
+//condition si email vide ou password si pas renseigné avant d'envoyer la requête :
 //on ne récupère pas le fetch
-
-
 
   fetch("http://localhost:5678/api/users/login", {
     method: "POST",
