@@ -6,6 +6,7 @@ const getWorks = () => {
     .then((data) => {
       works = data;
       displayWorks(works);
+      displayWorksInModal(works);
     })
     .catch((e) => {
       console.log("erreur backend");
@@ -42,7 +43,6 @@ const getCategories = () => {
     .then((data) => {
       const category = data;
       displayCategories(category);
-      displayWorksInModal(works);
     });
 };
 
@@ -85,57 +85,104 @@ getCategories();
 const isLogin = () => {
   return sessionStorage.getItem("token") ? true : false;
 };
- 
-const logOut = () => {
- return sessionStorage.clear ();
- window.location.href = "./";
 
+const logOut = () => {
+  return sessionStorage.clear();
+  window.location.href = "./";
 };
 
 // fonction pour afficher les travaux dans la modale :
 
 const displayWorksInModal = (works) => {
-  const modaleGallery = document.getElementById("modale-gallery");
-  
-modaleGallery.innerHTML ="";
-works.forEach((work) => {
-  let imgUrl = work.imageUrl;
-  let imgTitle = work.title;
+  const galleryContent = document.getElementById("gallery-content");
 
-  let image = document.createElement("img");
-  image.setAttribute("src", imgUrl);
-  image.setAttribute("alt", imgTitle);
- //ajout du style aux images ::
-  image.classList.add("image");
-  // Append image de modale-gallery
-  modaleGallery.appendChild(image);
- 
-});
+  galleryContent.innerHTML = "";
 
+  works.forEach((work) => {
+    let imgUrl = work.imageUrl;
+    let imgTitle = work.title;
+
+    let cardImg = document.createElement("div");
+    cardImg.classList.add("cardImg");
+
+    let image = document.createElement("img");
+    image.setAttribute("src", imgUrl);
+    image.setAttribute("alt", imgTitle);
+
+    let trashIcon = document.createElement("i");
+    trashIcon.classList.add("fa-trash-can");
+    trashIcon.classList.add("fa-solid");
+
+    trashIcon.addEventListener("click", () => {
+      deleteImg(work.id);
+    });
+
+    //ajout du style aux images ::
+    // Append image de modale-gallery
+    cardImg.appendChild(image);
+    cardImg.appendChild(trashIcon);
+    galleryContent.appendChild(cardImg);
+  });
 };
 
 //supprimer les travaux depuis l'api :
-const deleteImg = () => {
-  fetch("http://localhost:5678/api/works/${imageId}",{
-  method: "DELETE",
-  headers: { "Content-Type": "application/json" },
+const deleteImg = (imageId) => {
+  fetch(`http://localhost:5678/api/works/${imageId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + sessionStorage.getItem("token"),
+    },
+  })
+    //pas beosin de response.json car pas de format json à traduire :
+    .then((data) => {
+      console.log("image supprimer", data);
+      getWorks();
+    })
+    .catch((error) => {
+      console.error("Erreur suppression", error);
+    });
+};
+
+
+
+// ajouter des travaux depuis le desktop :
+
+const uploadForm = document.getElementById('uploadForm');
+
+uploadForm .addEventListener('submit', (event) => {
+  // permet de ne pas envoyer les info automatiquement lors du submit : 
+  event.preventDefault(); 
+
+//compile les info à envoyé à l'api :
+  const formData = new FormData(uploadForm);
+
+//récupère l'autorisation de l'api
+  fetch("http://localhost:5678/api/works",{
+    method: "POST",
+    body: formData,
+    headers: {
+      // récupère l'autorisation
+      "Authorization": "Bearer " + sessionStorage.getItem("token")
+  }
+
+  })
+.then(response =>{
+  if (response.ok) {
+ console.log("image récupérée");
+ return response.json();
+  }
+throw new Error('erreur récupération');
 })
-.then((response) => response.json())
-.then(data =>{
-  console.log ("image supprimer", data);
+.then(data => {
+  console.log('Upload réussi:', data);
+  works.push(data); //ajoute la new images au tableau qui contient les img 
+  displayWorks(works);
+  //permet d'afficher la new image 
 
 })
 .catch(error => {
-  console.error('Erreur suppression', error);
-});
-}
-// écoute pour supprimer une img en cliquant l'icone bin : 
-const remove = document.querySelector(".fa-trash-can");
-remove.addEventListener("click", ()=>{
-  const getToken = window.sessionStorage.getItem("token");
-  window.sessionStorage.removeItem("imageUrl");
-  console.log("icon clicked");
-
+  console.error('Erreur pendant le chargement:', error);
 });
 
-deleteImg();
+ });

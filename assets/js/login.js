@@ -1,12 +1,11 @@
 //page de connexion :
 
 const connectBtn = document.querySelector("#connectBtn");
-//récupère le token : 
+//récupère le token :
 
 connectBtn.addEventListener("click", function () {
-
-//condition si email vide ou password si pas renseigné avant d'envoyer la requête :
-//on ne récupère pas le fetch
+  //condition si email vide ou password si pas renseigné avant d'envoyer la requête :
+  //on ne récupère pas le fetch
 
   fetch("http://localhost:5678/api/users/login", {
     method: "POST",
@@ -25,8 +24,6 @@ connectBtn.addEventListener("click", function () {
         const token = sessionStorage.getItem("token", data.token);
         console.log("token récupéré", token);
 
-       
-
         //renvoie vers la page principale une fois la connexion réussit :
         window.location.href = "./";
       } else {
@@ -39,6 +36,5 @@ connectBtn.addEventListener("click", function () {
     });
 });
 
-//vérifie si l'user est bien connecter pour permettre d'afficher 
+//vérifie si l'user est bien connecter pour permettre d'afficher
 //les éléments de connexions :
-

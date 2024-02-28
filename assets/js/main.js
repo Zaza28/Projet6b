@@ -21,9 +21,20 @@ const isLogged = isLogin();
 //appel des éléments de la modale : 
 
 const btnModif = document.querySelector(".modifier_works");
+const modaleGallery = document.querySelector("#modale-gallery");
 const modale = document.getElementById("modale");
 const closeBtn = document.querySelector(".close");
 const modaleTitle = document.querySelector(".modale-title");
+const btnAjoutImg = document.querySelector(".Ajout-Img");
+
+
+// les éléments de la modale Form : 
+const modaleForm = document.querySelector("#modale-form");
+const closeBtnForm = document.querySelector(".close-form");
+const arrowBack = document.querySelector(".fa-arrow-left");
+const btnAddImg = document.querySelector(".add-picture");
+const imageInput = document.getElementById('imageInput');
+
 
 //affiche les éléments de l'user connecté et masqué les autres éléments :
 
@@ -33,9 +44,8 @@ if (isLogged) {
   categoryBtns.style.display = " none";
   logOutBtn.style.display = " inline";
   logInBtn.style.display = "none";
-  btnModif.style.display = "block";
-  modale.style.display = "block";
-
+  btnModif.style.display = "flex";
+  
 } else {
   //affiche les éléments masqués de l'user déconnecter :
   editBar.style.display = "none";
@@ -46,10 +56,12 @@ if (isLogged) {
 
 }
 
-//Création de la fenêtre modale lors du click sur modifier :
+//ouverture de la fenêtre modale lors du click sur modifier :
 btnModif.addEventListener("click", () => {
   console.log("clicked");
   modale.style.display = "block";
+  modaleForm.style.display ="none";
+  closeBtnForm.style.display="none";
   displayWorks(works);
 
 });
@@ -66,11 +78,25 @@ window.addEventListener("click", (event) => {
   }
 });
 
+//au click la modale formulaire apparait et la modale gallery disparait : 
+btnAjoutImg.addEventListener("click",()=>{
+  console.log("button clicked");
+   modaleForm.style.display ="block";
+   modaleGallery.style.display = "none";
+   closeBtn.style.display="none";
+});
 
+//click sur la flèche on affiche la modale précédente :
+arrowBack.addEventListener("click", ()=>{
+  modaleForm.style.display ="none";
+  modaleGallery.style.display = "block";
+  closeBtn.style.display="block";
+});
 
-
-
-
+//au click permet à l'input d'ouvrir la fenêtre de l'user pour choisir une image : 
+btnAddImg.addEventListener("click", ()=>{
+  imageInput.click();
+});
 
 
 
