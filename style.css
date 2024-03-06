@@ -1,3 +1,4 @@
+/*# sourceMappingURL=style.css.map */
 /* /* /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -151,7 +152,7 @@ body {
 	height: 45px;
 	background-color: black;
 	justify-content: center;
-	
+
 }
 
 .text_edition {
@@ -267,41 +268,45 @@ li a:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
-/**********Modifier les travaux*********** */
-.modifier_works{
+
+/********** BTN pour modifier les travaux *************/
+.modifier_works {
 	display: flex;
 	padding-left: 700px;
 	margin-top: -52px;
 	margin-bottom: 40px;
 }
 
-.btnModif{
+.btnModif {
 	display: flex;
 	font-family: 'Work Sans';
 	border: none;
 	background-color: #FFFEF8;
+	gap: 5px;
+
 }
 
-.fa-pen-to-square{
+.fa-pen-to-square {
 	color: black;
 }
-/*********** Fenêtre modale ************* */
-#modale{
-	display: none; 
+
+/*********** Fenêtre modale Gallery ***************/
+#modale {
+	display: none;
 	position: fixed;
-	z-index: 1; 
-	padding-top: 100px; 
+	z-index: 1;
+	padding-top: 100px;
 	left: 0;
 	top: 0;
-	width: 100%; 
+	width: 100%;
 	height: 100%;
-	overflow: auto; 
-	background-color: rgb(0,0,0); 
-	background-color: rgba(0,0,0,0.4);
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
 
 }
 
-#modale-gallery{
+#modale-gallery {
 	background-color: #fefefe;
 	margin: auto;
 	border: 1px solid #888;
@@ -309,167 +314,269 @@ li a:hover {
 	padding: 60px;
 	height: 400px;
 	border-radius: 3%;
-	display: flex;
-	flex-direction: column; 
 }
 
-#gallery-content{
+#gallery-content {
 	margin: auto;
 	border-bottom: 1px solid #888;
-	padding: 160px;
- 
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	overflow: auto;
+	justify-content: space-evenly;
+
+
 }
-.modale-title{
+
+.modale-title {
 	padding-bottom: 10px;
 	font-family: 'Syne';
- font-size: 20px;
- color:black;
- display: flex;
-height: 0;
- justify-content: center;
-
-}
-.cardImg img {
-width: 100%;
-}
-.cardImg{
-	width: 15%;
-	padding: 10px;
-
-}
-/* **********icone supprimer *********** */
-.fa-trash-can{
-	color: #000;
-	width: 50%;
+	font-size: 20px;
+	color: black;
+	display: flex;
 	height: 0;
+	justify-content: center;
 
 }
-/****** The Close Button ********/
- .close {
-	color:black;
+
+.cardImg img {
+	width: 100%;
+}
+
+.cardImg {
+	width: 15%;
+	padding: 5px;
+}
+
+/*********** icone supprimer ************/
+.fa-trash-can {
+	background-color: #000;
+	padding: 11px;
+	color: white;
+	height: 0px;
+	width: 0%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	margin-top: -90px;
+	margin-left: 40px;
+}
+
+/******* close btn gallery ********/
+.close {
+	color: black;
 	font-size: 28px;
 	font-weight: bold;
 	height: 0;
 	display: flex;
 	align-self: flex-end;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;
-  }
-  /***********Bouton ajout des images modale *********/
-.Btn-Ajouter{
+}
+
+/*********** Bouton ajout des images *********/
+.Btn-Ajouter {
 	display: flex;
 	justify-content: center;
 	padding-top: 30px;
 }
-  .Ajout-Img{
+
+.Ajout-Img {
 	font-family: 'Syne';
 	font-weight: normal;
-	color:white;
+	color: white;
 	background-color: #1D6154;
 	border-radius: 35px;
 	padding: 11px;
 	width: 250px;
 	border-style: none;
 }
-/*********Modale Form content ************/
-#modale-form{
+
+/********* Modale Formulaire d'ajout ************/
+#modale-form {
 	background-color: #fefefe;
 	margin: auto;
 	border: 1px solid #888;
 	width: 30%;
-	padding: 60px;
+	padding: 80px;
 	height: 400px;
-	border-radius: 3%;
+	border-radius: 2%;
 	display: flex;
-	flex-direction: column; 
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 
 }
-#form-content{
+
+#form-content {
 	display: flex;
 	flex-direction: column;
-	 background-color: #fefefe;
+	justify-content: center;
+	align-items: center;	
+	background-color: #fefefe;
 	margin: auto;
 	border-bottom: 1px solid #888;
-	width: 100%;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	
+		padding: 25px;
+		width: 100%;
 }
+
 /****** insérer image *********/
-#upload-Img{
+#uploadForm{
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+#upload-Img {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	background-color: rgb(207, 223, 243);
-	padding: 20px;
+	padding: 15px;
+	height: 135px;
+	width: 65%;
+}
+
+#upload-Img .fa-image {
+	color: rgba(147, 155, 180, 0.816);
+	font-size: 70px;
+
+}
+.picture{
+	object-fit: contain;
+	display: flex;
 	height: 100px;
 }
 
-.fa-image{
-	color: rgba(196, 189, 189, 0.816);
-width: 100%;
-}
+/* .add-picture {
+	
+} */
 
 #imageInput{
-	font-family: 'Syne';
-	font-weight: normal;
-	color:rgb(109, 109, 157);
+	font-weight: 600;
+	color: rgb(102, 110, 228);
 	background-color: rgba(196, 189, 189, 0.816);
 	border-radius: 35px;
 	padding: 11px;
 	width: 170px;
 	border-style: none;
+	display: flex;
+	justify-content: center;
 }
 
+.modaleform_text {
+	font-weight: normal;
+	font-size: 12px;
+	color: #3D3D3D;
+	padding-top: 3px;
+}
 
-/************header form********/
-.fa-arrow-left{
-	color:black;
+/********Formulaire Titre  & catégrorie **********/
+#title {
+	width: 70%;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	height: 35px;
+	display: flex;
+	flex-direction: row;
+}
+
+.title-formulaire {
+	font-family: 'Syne';
+	font-size: 12px;
+	font-weight: normal;
+	color: #3D3D3D;
+	display: flex;
+	flex-direction: row;
+	margin-left: -290px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+}
+
+#category {
+	width: 70%;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	height: 35px;
+	display: flex;
+	flex-direction: row;
+}
+
+.title-category {
+	font-family: 'Syne';
+	font-size: 12px;
+	font-weight: normal;
+	color: #3D3D3D;
+	display: flex;
+	flex-direction: row;
+	margin-left: -250px;
+	padding-top: 20px;
+	padding-bottom: 15px;
+}
+
+/************header form**********/
+.fa-arrow-left {
+	color: black;
 	font-size: 28px;
 	font-weight: bold;
 	height: 0;
 	display: flex;
 	align-self: flex-start;
 }
-.close-form{
-	color:black;
+
+.close-form {
+	color: black;
 	font-size: 28px;
+	width: 25px;
 	font-weight: bold;
-	height: 0;
 	display: flex;
-	align-self: flex-end;
 }
-.form-title{
-	padding-bottom: 10px;
+
+.form-title {
 	font-weight: lighter;
- font-size: 20px;
- color:black;
- display: flex;
-height: 0;
- justify-content: center;
+	font-family: Arial, sans-serif;
+	font-size: 20px;
+	color: black;
+	display: flex;
+	flex-direction: row;
+	height: 0;
+	justify-content: center;
+	align-items: center;
 }
-/*****footer form********/
-.Btn-valider{
+
+/**********footer form***********/
+.Btn-valider {
 	display: flex;
 	justify-content: center;
-	padding-top: 30px;
+	padding-top: 10px;
 }
-.valider-ajout{
+
+.valider-ajout {
 	font-family: 'Syne';
 	font-weight: normal;
-	color:white;
+	color: white;
 	background-color: gray;
 	border-radius: 35px;
 	padding: 11px;
-	width: 250px;
+	width: 220px;
 	border-style: none;
 }
-/* *******boutons des catégories *****/
+.valider-ajout_active{
+	background-color:#1D6154;
+
+}
+
+/******** boutons catégories du site ********/
 .categoryBtns {
 	display: flex;
 	flex-direction: row;
@@ -661,4 +768,4 @@ footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	padding: 10px;
-} 
+}

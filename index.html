@@ -12,7 +12,7 @@
 	<script src="https://kit.fontawesome.com/950f8a59b3.js" crossorigin="anonymous"></script>
 
 	<meta name="description" content="">
-	<link rel="stylesheet" href="./assets/style.css">
+	<link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
@@ -78,25 +78,32 @@
 					<span class="close-form">&times;</span>
 					<h2 class="form-title">Ajout photo</h2>
 
-					<div id="upload-Img">
+					<div id="form-content">
+
+                    <form  id="uploadForm" action="#" method="post" enctype="multipart/form-data">
+						
+						<div id="upload-Img">
 							<i class="fa-regular fa-image"></i>
 							<label for="imageInput" class="add-picture"></label>
 							<input type="file" id="imageInput" accept="image/*">
-                             <p>jpg, png : 4mo max</p>
-					</div>
+                           <p class="modaleform_text">jpg, png : 4mo max</p>
+						</div>
+					
 
-					<div id="form-content">
-                    <form  id="uploadForm" action="#" method="post" enctype="multipart/form-data">
-                     <label for="title">Titre</label>
-					 <input type="text" title="title" id="title">
-					 <label for="category">Catégorie</label>
-					 <input type="radio" id="category1" name="category" value="category1">
-					 <label for="category1"></label>
+					<label for="title" class="title-formulaire">Titre</label>
+					 <input type="text" title="title" id="title" autocomplete="on">
+					 <label for="category" class="title-category">Catégorie</label>
+					 <select name="" id="category" autocomplete="on">
+						<option value="0"></option>
+						<option value="1">Objets</option>
+						<option value="2">Appart</option>
+						<option value="3">hotel & restaurants</option>
+					 </select>
                     </form>
 					</div>
-
+					
 					<span class="Btn-valider">	
-					<button class="valider-ajout">Valider</button>
+					<button type="button" id="Btn_Valider" class="valider-ajout">Valider</button>
 					</span>
 				
 				</div>

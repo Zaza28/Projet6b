@@ -93,10 +93,7 @@ arrowBack.addEventListener("click", ()=>{
   closeBtn.style.display="block";
 });
 
-//au click permet à l'input d'ouvrir la fenêtre de l'user pour choisir une image : 
-btnAddImg.addEventListener("click", ()=>{
-  imageInput.click();
-});
+
 
 
 
