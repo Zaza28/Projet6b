@@ -34,6 +34,7 @@ const closeBtnForm = document.querySelector(".close-form");
 const arrowBack = document.querySelector(".fa-arrow-left");
 const btnAddImg = document.querySelector(".add-picture");
 const imageInput = document.getElementById('imageInput');
+const validerAjoutForm = document.querySelector(".valider-ajout_active");
 
 
 //affiche les éléments de l'user connecté et masqué les autres éléments :
@@ -61,15 +62,16 @@ btnModif.addEventListener("click", () => {
   console.log("clicked");
   modale.style.display = "block";
   modaleForm.style.display ="none";
-  closeBtnForm.style.display="none";
   displayWorks(works);
-
+ 
 });
+
 // écoute sur la croix pour fermer la fenêtre : 
 closeBtn.addEventListener("click", () => {
   console.log("Close button clicked");
   modale.style.display = "none";
 });
+
 // ferme la fenêtre lorsque l'on click en dehors de celle-ci : 
 window.addEventListener("click", (event) => {
   if (event.target === modale) {
@@ -93,6 +95,11 @@ arrowBack.addEventListener("click", ()=>{
   closeBtn.style.display="block";
 });
 
+//click sur la croix du formulaire d'ajout pour fermer la modale
+closeBtnForm.addEventListener("click", ()=>{
+console.log("button close clicked")
+modale.style.display = "none";
+});
 
 
 

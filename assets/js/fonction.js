@@ -92,7 +92,6 @@ const logOut = () => {
 };
 
 // fonction pour afficher les travaux dans la modale :
-
 const displayWorksInModal = (works) => {
   const galleryContent = document.getElementById("gallery-content");
 
@@ -114,7 +113,11 @@ const displayWorksInModal = (works) => {
     trashIcon.classList.add("fa-solid");
 
     trashIcon.addEventListener("click", () => {
-      deleteImg(work.id);
+      
+      if(confirm("?")){
+              deleteImg(work.id);
+      }
+
     });
 
     //ajout du style aux images ::
@@ -187,14 +190,20 @@ Btn_Valider.addEventListener("click", () => {
 
 //permet de vérifier le formulaire avant de l'envoyer : 
 function validateForm(){
-  
+  const title = document.getElementById("title").value;
+  const category = document.getElementById("category").value;
+  const image = document.getElementById("imageInput").files[0];
 
+  //vérifie si les champs si les sont vides : 
+  if (title.trim() === "" || category.trim() === "" || !image) {
+    alert("Veuillez remplir les champs");
+    return false;
+}
 
-
+//vérifie si le champ de l'img est rempli et avec une image valide :
 
 
 }
-
 
 
 //Fait apparaître l'image ajouter dans la modale :
