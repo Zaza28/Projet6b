@@ -10,16 +10,20 @@ const logOutBtn = document.querySelector("#logOutBtn");
 logOutBtn.addEventListener("click", () => {
   logOut();
 });
-//partie création des catégories :
 
+
+
+//partie création des catégories :
 let category = [];
 
 
 // vérifie si l'user est connecté :
 const isLogged = isLogin();
 
-//appel des éléments de la modale : 
 
+
+
+//appel des éléments de la modale : 
 const btnModif = document.querySelector(".modifier_works");
 const modaleGallery = document.querySelector("#modale-gallery");
 const modale = document.getElementById("modale");

@@ -80,16 +80,28 @@ const displayCategories = (category) => {
 getWorks();
 getCategories();
 
-// user connected
-
+// user connected : 
 const isLogin = () => {
   return sessionStorage.getItem("token") ? true : false;
+
+if (validateLogIn === isLogin){
+
+}
+
 };
+
+function validateLogIn (){
+
+}
 
 const logOut = () => {
   return sessionStorage.clear();
   window.location.href = "./";
 };
+
+
+//partie modales :  
+
 
 // fonction pour afficher les travaux dans la modale :
 const displayWorksInModal = (works) => {
@@ -184,6 +196,8 @@ Btn_Valider.addEventListener("click", () => {
     Btn_Valider.classList.add("valider-ajout_active");
   } else {
     Btn_Valider.classList.remove("valider-ajout_active");
+    console.error("L'élément avec l'ID 'imageInput' n'a pas été trouvé dans le document.");
+
   }
 
 });
@@ -192,7 +206,10 @@ Btn_Valider.addEventListener("click", () => {
 function validateForm(){
   const title = document.getElementById("title").value;
   const category = document.getElementById("category").value;
-  const image = document.getElementById("imageInput").files[0];
+  const imageInput = document.getElementById("imageInput");
+
+      // Vérifie si l'élément imageInput existe avant d'accéder à sa propriété files
+      const image = imageInput ? imageInput.files[0] : null;
 
   //vérifie si les champs si les sont vides : 
   if (title.trim() === "" || category.trim() === "" || !image) {
@@ -202,6 +219,7 @@ function validateForm(){
 
 //vérifie si le champ de l'img est rempli et avec une image valide :
 
+return true;
 
 }
 

@@ -149,29 +149,30 @@ body {
 .barre_edition {
 	display: flex;
 	width: 100%;
-	height: 45px;
+	height: 55px;
 	background-color: black;
-	justify-content: center;
-
 }
 
 .text_edition {
 	display: flex;
-	align-items: center;
+	align-items:center;
 	justify-content: center;
+	text-align: center;
+	align-self: center;
 	font-family: 'Work Sans';
 	color: white;
-	font-size: 15px;
-	gap: 5px;
+	font-size: 16px;
+	gap: 15px;
+	padding-top: 15px;
 
 }
 
-/* .fa-regular {
+p .fa-pen-to-square {
 	display: flex;
 	color: white;
-	width: 20px;
+	width: 10px;
 	align-items: center;
-} */
+}
 
 header {
 	display: flex;
@@ -219,7 +220,8 @@ nav li {
 }
 
 li:hover {
-	color: #B1663C;
+	color: #000000;
+	font-weight: bolder;
 }
 
 li a {
@@ -232,7 +234,8 @@ li a:visited {
 }
 
 li a:hover {
-	color: #B1663C;
+	color: #000000;
+	font-weight: bolder;
 
 }
 
@@ -272,22 +275,26 @@ li a:hover {
 /********** BTN pour modifier les travaux *************/
 .modifier_works {
 	display: flex;
-	padding-left: 700px;
+	padding-left: 690px;
 	margin-top: -52px;
 	margin-bottom: 40px;
 }
 
 .btnModif {
 	display: flex;
-	font-family: 'Work Sans';
+	font-family: "Work Sans";
 	border: none;
+	color: #000;
+	font-size: 14px;
+	text-align: center;
 	background-color: #FFFEF8;
-	gap: 5px;
+	gap: 7px;
 
 }
 
 .fa-pen-to-square {
 	color: black;
+
 }
 
 /*********** Fenêtre modale Gallery ***************/
@@ -448,12 +455,12 @@ li a:hover {
 	padding: 15px;
 	height: 135px;
 	width: 78%;
+	gap: 10px;
 }
 
 #upload-Img .fa-image {
 	color: #B9C5CC;
 	font-size: 70px;
-    margin-top: -25px;
 
 }
 
@@ -461,13 +468,10 @@ li a:hover {
 	object-fit: contain;
 	display: flex;
 	height: 100px;
+
 }
 
-/* .add-picture {
-	
-} */
-
-#imageInput {
+.add-picture {
 	font-weight: 600;
 	color: #306685;
 	background-color: rgba(196, 189, 189, 0.816);
@@ -476,26 +480,31 @@ li a:hover {
 	width: 170px;
 	border-style: none;
 	display: flex;
-	justify-content: center;
-	margin-top: -110px;
-	border: 2px red solid;
-
+	justify-content: center;	
+	cursor: pointer;
 }
 
-/* input #imageInput{
-
-} */
+#imageUnput {
+	position: absolute;
+	width: 0.1%;
+	height: 0.1px;
+	overflow: hidden;
+	opacity: 0;
+	z-index: -1;
+}
+ input[type="file" i]{
+display: none;
+}
 
 .modaleform_text {
 	font-weight: normal;
 	font-size: 12px;
 	color: #444444;
-	padding-top: 45px;
 }
 
 /********Formulaire Titre  & catégrorie **********/
 #title {
-	width: 70%;
+	width: 85%;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	height: 35px;
@@ -506,19 +515,18 @@ li a:hover {
 }
 
 .title-formulaire {
-	font-family: 'Syne';
-	font-size: 12px;
-	font-weight: normal;
+	font-family: "Work Sans";
+	font-size: 14px;
+	font-weight: 500;
 	color: #3D3D3D;
 	display: flex;
 	flex-direction: row;
-	margin-left: -290px;
-	padding-top: 10px;
-
+	margin-left: -360px;
+	margin-bottom: -10px;
 }
 
 #category {
-	width: 70%;
+	width: 85%;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	height: 35px;
@@ -529,14 +537,14 @@ li a:hover {
 }
 
 .title-category {
-	font-family: 'Syne';
-	font-size: 12px;
-	font-weight: normal;
+	font-family: "Work Sans";
+	font-weight: 500;
+	font-size: 14px;
 	color: #3D3D3D;
 	display: flex;
 	flex-direction: row;
-	margin-left: -250px;
-	padding-top: 20px;
+	margin-left: -320px;
+    margin-bottom: -10px;
 }
 
 /************header form**********/
@@ -591,9 +599,9 @@ li a:hover {
 
 /**********footer form***********/
 .form-bottom-line{
-	width: 75%;
+	width: 85%;
 	color: #B3B3B3;
-	margin-top: 20px;
+	margin-top: 15px;
 }
 
 .Btn-valider {
@@ -722,7 +730,8 @@ input[type="submit"] {
 }
 
 .nav_login a:hover {
-	color: #B1663C;
+	color: #000000;
+	font-weight: bolder;
 }
 
 .nav_actif {
