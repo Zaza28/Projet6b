@@ -6,7 +6,7 @@ const categoryBtns = document.querySelector(".categoryBtns");
 
 // log in et log out :
 const logInBtn = document.querySelector("#logInBtn");
-const logOutBtn = document.querySelector("#logOutBtn");
+const logOutBtn = document.querySelector("#logOutBtn")
 logOutBtn.addEventListener("click", () => {
   logOut();
 });
