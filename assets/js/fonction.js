@@ -71,6 +71,7 @@ const displayCategories = (category) => {
   firstBtn.addEventListener("click", () => {
     getWorks();
    customForEach(categoryBtns.querySelectorAll("button"),"button_actif", false);
+   firstBtn.classList.add("button_actif");
   });
 
   category.forEach((cat) => {
@@ -83,7 +84,6 @@ const displayCategories = (category) => {
     buttons.classList.add("button");
 
     buttons.addEventListener("click", () => {
-
       customForEach(categoryBtns.querySelectorAll("button"), "button_actif", false);
       buttons.classList.add("button_actif");
       firstBtn.classList.remove("button_actif");

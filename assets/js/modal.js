@@ -57,7 +57,7 @@ const displayWorksInModal = (works) => {
   };
   
   // ajouter des travaux depuis le desktop :
-  const Btn_Valider = document.getElementById("Btn_Valider");
+const Btn_Valider = document.getElementById("Btn_Valider");
   Btn_Valider.addEventListener("click", () => {
     const isValid = validateForm();
     if (isValid) {
@@ -85,18 +85,13 @@ const displayWorksInModal = (works) => {
           console.log("Upload réussi:", data);
           getWorks();
           //permet d'afficher la new image
+           window.location.href = "./";
+
         })
         .catch((error) => {
           console.error("Erreur pendant le chargement:", error);
         });
-  
-      Btn_Valider.classList.add("valider-ajout_active");
-    } else {
-      Btn_Valider.classList.remove("valider-ajout_active");
-      console.error("L'élément avec l'ID 'imageInput' n'a pas été trouvé dans le document.");
-  
-    }
-  
+    } 
   });
   
   //permet de vérifier le formulaire avant de l'envoyer : 
@@ -111,11 +106,11 @@ const displayWorksInModal = (works) => {
     //vérifie si les champs si les sont vides : 
     if (title.trim() === "" || category.trim() === "" || !image) {
       alert("Veuillez remplir les champs");
+      Btn_Valider.classList.remove("valider-ajout_active");
       return false;
   }
-  
+        Btn_Valider.classList.add("valider-ajout_active");
   //vérifie si le champ de l'img est rempli et avec une image valide :
-  
   return true;
   
   }
