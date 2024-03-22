@@ -1,5 +1,4 @@
 //partie affichage des images :
-
 const getWorks = () => {
   fetch("http://localhost:5678/api/works")
     .then((response) => response.json())

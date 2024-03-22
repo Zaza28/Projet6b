@@ -83,9 +83,8 @@ const Btn_Valider = document.getElementById("Btn_Valider");
         .then((response) => response.json())
         .then((data) => {
           console.log("Upload réussi:", data);
+          alert("votre image a été ajouté avec succées ! ")
           getWorks();
-          //permet d'afficher la new image
-           window.location.href = "./";
 
         })
         .catch((error) => {
