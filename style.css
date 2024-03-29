@@ -329,8 +329,8 @@ li a:hover {
 	border-bottom: 1px solid #888;
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
 	flex-wrap: wrap;
+	padding-left: 30px;
 	overflow: auto;
 	padding-top: 20px;
 	gap: 10px;
@@ -347,16 +347,21 @@ li a:hover {
 	justify-content: center;
 }
 
-.cardImg img {
+.cardImg {
+	padding-bottom: 20px;
 	display: flex;
-	width: 100%;
-	object-fit: cover;
+    flex-wrap: wrap;
+    flex-direction: row-reverse; 
+    justify-content: flex-start;
 }
 
-.cardImg {
-	width: 15%;
-	padding-bottom: 20px;
+.cardImg img {
+	width: 105%;
+    height: 95px;
+	object-fit: cover;
+	
 }
+
 
 /*********** icone supprimer ************/
 .fa-trash-can {
@@ -368,9 +373,9 @@ li a:hover {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-right: 6px;
+	margin-top: 6px;
 	position: absolute;
-	margin-top: -87px;
-	margin-left: 42px;
 	border-radius: 3px;
 }
 

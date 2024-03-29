@@ -11,16 +11,10 @@ logOutBtn.addEventListener("click", () => {
   logOut();
 });
 
-
-
 //partie création des catégories :
 let category = [];
-
-
 // vérifie si l'user est connecté :
 const isLogged = isLogin();
-
-
 
 
 //appel des éléments de la modale : 
@@ -39,6 +33,8 @@ const arrowBack = document.querySelector(".fa-arrow-left");
 const btnAddImg = document.querySelector(".add-picture");
 const imageInput = document.getElementById('imageInput');
 const validerAjoutForm = document.querySelector(".valider-ajout_active");
+const BtnValider = document.getElementById("Btn_Valider");
+
 
 
 //affiche les éléments de l'user connecté et masqué les autres éléments :
@@ -65,6 +61,7 @@ if (isLogged) {
 btnModif.addEventListener("click", () => {
   console.log("clicked");
   modale.style.display = "block";
+  modaleGallery.style.display = "block";
   modaleForm.style.display ="none";
   displayWorks(works);
  
@@ -74,6 +71,8 @@ btnModif.addEventListener("click", () => {
 closeBtn.addEventListener("click", () => {
   console.log("Close button clicked");
   modale.style.display = "none";
+
+
 });
 
 // ferme la fenêtre lorsque l'on click en dehors de celle-ci : 
@@ -81,6 +80,9 @@ window.addEventListener("click", (event) => {
   if (event.target === modale) {
     console.log("Clicked outside modal");
     modale.style.display = "none";
+    modaleGallery.style.display = "none";
+    modaleForm.style.display ="none";
+
   }
 });
 
@@ -103,9 +105,15 @@ arrowBack.addEventListener("click", ()=>{
 closeBtnForm.addEventListener("click", ()=>{
 console.log("button close clicked")
 modale.style.display = "none";
+modale.style.display = "none";
+
 });
 
+BtnValider.addEventListener("click", ()=>{
+  modaleForm.style.display ="none";
+  modale.style.display = "none";
 
+});
 
 
 

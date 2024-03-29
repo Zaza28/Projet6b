@@ -68,7 +68,7 @@ const displayCategories = (category) => {
   categoryBtns.appendChild(firstBtn);
 
   firstBtn.addEventListener("click", () => {
-    getWorks();
+    displayWorks(works);
    customForEach(categoryBtns.querySelectorAll("button"),"button_actif", false);
    firstBtn.classList.add("button_actif");
   });
