@@ -80,9 +80,6 @@ window.addEventListener("click", (event) => {
   if (event.target === modale) {
     console.log("Clicked outside modal");
     modale.style.display = "none";
-    modaleGallery.style.display = "none";
-    modaleForm.style.display ="none";
-
   }
 });
 
@@ -105,15 +102,8 @@ arrowBack.addEventListener("click", ()=>{
 closeBtnForm.addEventListener("click", ()=>{
 console.log("button close clicked")
 modale.style.display = "none";
-modale.style.display = "none";
-
 });
 
-BtnValider.addEventListener("click", ()=>{
-  modaleForm.style.display ="none";
-  modale.style.display = "none";
-
-});
 
 
 

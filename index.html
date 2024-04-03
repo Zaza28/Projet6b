@@ -81,26 +81,28 @@
 					<div id="form-content">
 
                     <form  id="uploadForm" action="#" method="post" enctype="multipart/form-data">
-						
-						<div id="upload-Img">
+					
+						<label id="upload-Img" for="imageInput" >
+						<div id="add-picture-icon">
 							<i class="fa-regular fa-image"></i>
 							<label for="imageInput" class="add-picture">+ Ajouter photo</label>
                            <p class="modaleform_text">jpg, png : 4mo max</p>
 						</div>
-
+						<div class="prevent-img">
+						</div>
+					</label>
+			
+					
 					<input type="file" id="imageInput" accept="image/*">
 					<label for="title" class="title-formulaire">Titre</label>
 					 <input type="text" title="title" id="title" autocomplete="on">
 					 <label for="category" class="title-category">Catégorie</label>
 					 <select name="" id="category" autocomplete="on">
-						<option value="0"></option>
-						<option value="1">Objets</option>
-						<option value="2">Appart</option>
-						<option value="3">hotel & restaurants</option>
 					 </select>
 					 <hr class="form-bottom-line">
+					 <p class="Erreur-msg">Vérifier que toutes les données soient saisis</p>
 					 <span class="Btn-valider">	
-						<button type="button" id="Btn_Valider" class="valider-ajout">Valider</button>
+						<button type="button" id="Btn_Valider" disabled="true" class="valider-ajout">Valider</button>
 						</span>
                     </form>
 					</div>

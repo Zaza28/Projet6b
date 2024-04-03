@@ -4,7 +4,6 @@ const InputCategory = document.getElementById("category");
 const InputImage = document.getElementById("imageInput");
 const Btn_Valider = document.getElementById("Btn_Valider");
 
-
 // fonction pour afficher les travaux dans la modale :
 const displayWorksInModal = (works) => {
   const galleryContent = document.getElementById("gallery-content");
@@ -59,7 +58,6 @@ const deleteImg = (imageId) => {
     });
 };
 
-
 //Fait apparaître l'image ajoutée dans la modale :
 //"change" éxécute une fonction lorsque l'user séléctionne un nouveau fichier
 InputImage.addEventListener("change", (event) => {
@@ -67,20 +65,21 @@ InputImage.addEventListener("change", (event) => {
   //si aucun fichier n'est sélectionné, "file" sera null
   const file = event.target.files[0];
   //si un fichier est sélectionné, on exécute le code :
-  if (file) {
+  if (file){
     //permet de lire le contenu des fichiers :
     const reader = new FileReader();
     //éxécute function lorsque le chargement du fichier est fini
     //on donne les données du fichier chargé à event(e):
-    reader.onload = function (e) {
+    reader.onload = function (e){
       const img = document.createElement("img");
       img.classList.add("picture");
       //définit src de l'img en utilisant les données converties de l'URL:
       img.src = e.target.result;
-      const uploadImgContainer = document.getElementById("upload-Img");
+      const preventImg = document.querySelector(".prevent-img");
       //efface les éléments existants :
-      uploadImgContainer.innerHTML = "";
-      uploadImgContainer.appendChild(img);
+      preventImg.innerHTML = "";
+      preventImg.appendChild(img);
+     document.getElementById("add-picture-icon").style.display="none";
     };
     //convertit l'URL en données :
     reader.readAsDataURL(file);
@@ -88,20 +87,34 @@ InputImage.addEventListener("change", (event) => {
   //vérifie la validité du formulaire après la sélection d'une image
   validateForm();
   console.log("vérification img form ok");
-
 });
+
 
 //permet de vérifier le formulaire avant de l'envoyer :
 InputTitle.addEventListener("keyup", () => {
   validateForm();
   console.log("vérification keyup ok");
 });
-InputCategory.addEventListener("keyup", () => {
+InputCategory.addEventListener("change", () => {
   validateForm();
-  console.log("vérification keyup ok");
-
+  console.log("vérification change ok");
 });
 
+// Tableau des ajouts options dynamiques : 
+const newOptions = [
+  {value: "0"},
+  { value: "1", text: "Objets" },
+  { value: "2", text: "Appart" },
+  { value: "3", text: "hotel & restaurants" },
+];
+
+// Ajouter les options à la balise select : 
+newOptions.forEach(option => {
+  const newOption = document.createElement("option");
+  newOption.value = option.value;
+  newOption.textContent = option.text;
+  InputCategory.appendChild(newOption);
+});
 
 // ajouter des travaux depuis le desktop :
 Btn_Valider.addEventListener("click", () => {
@@ -132,34 +145,38 @@ Btn_Valider.addEventListener("click", () => {
         getWorks();
       const uploadForm = document.getElementById("uploadForm");
        uploadForm.reset(); //faire dispaitre l'image de l'aperçu
-       const uploadImgContainer = document.getElementById("upload-Img");
-       uploadImgContainer.innerHTML = "";
-      })
+       const preventImg = document.querySelector(".prevent-img");
+       preventImg.innerHTML = "";
+      document.getElementById("add-picture-icon").style.display="block";
+    })
       .catch((error) => {
         console.error("Erreur pendant le chargement:", error);
       });
       console.log("vérification d'ajout image ok");
   }
+  Btn_Valider.classList.remove("valider-ajout_active");
 });
-
 
 function validateForm() {
   const title = InputTitle.value;
   const category = InputCategory.value;
   const imageInput = InputImage;
+  const msgErreur = document.querySelector(".Erreur-msg");
   // Vérifie si l'élément imageInput existe avant d'accéder à sa propriété files
   const image = imageInput ? imageInput.files[0] : null;
   const Btn_Valider = document.getElementById("Btn_Valider");
   //vérifie si les champs si les sont vides :
   if (title.trim() === "" || category === "0" || !image) {
+    msgErreur.style.display="block";
+    Btn_Valider.disabled = true;
     Btn_Valider.classList.remove("valider-ajout_active");
     return false;
   } else {
     //vérifie si le champ de l'img est rempli et avec une image valide :
+    msgErreur.style.display="none";
+    Btn_Valider.disabled = false;
     Btn_Valider.classList.add("valider-ajout_active");
     console.log("vérification validateForm ok");
     return true;
   }
-  
-
 }

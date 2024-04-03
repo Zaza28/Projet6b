@@ -455,7 +455,6 @@ li a:hover {
 
 #upload-Img {
 	display: flex;
-	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	background-color: #E8F1F6;
@@ -468,14 +467,18 @@ li a:hover {
 #upload-Img .fa-image {
 	color: #B9C5CC;
 	font-size: 70px;
-
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-bottom: 5px;
 }
+
+
 
 .picture {
 	object-fit: contain;
 	display: flex;
 	height: 100px;
-
 }
 
 .add-picture {
@@ -483,11 +486,14 @@ li a:hover {
 	color: #306685;
 	background-color: rgba(196, 189, 189, 0.816);
 	border-radius: 35px;
+	margin-bottom: 5px;
 	padding: 11px;
 	width: 170px;
 	border-style: none;
 	display: flex;
-	justify-content: center;	
+	justify-content: center;
+	align-items:center ;
+	align-self: center;	
 	cursor: pointer;
 }
 
@@ -507,6 +513,8 @@ display: none;
 	font-weight: normal;
 	font-size: 12px;
 	color: #444444;
+padding-left: 40px;
+padding-top: 5px;
 }
 
 /********Formulaire Titre  & catégrorie **********/
@@ -824,4 +832,8 @@ footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	padding: 10px;
+}
+.Erreur-msg{
+	color: red;
+	display: none;
 }
