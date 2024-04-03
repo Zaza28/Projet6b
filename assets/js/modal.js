@@ -1,4 +1,9 @@
-//partie modales :
+//DOM:
+const InputTitle = document.getElementById("title");
+const InputCategory = document.getElementById("category");
+const InputImage = document.getElementById("imageInput");
+const Btn_Valider = document.getElementById("Btn_Valider");
+
 
 // fonction pour afficher les travaux dans la modale :
 const displayWorksInModal = (works) => {
@@ -54,34 +59,17 @@ const deleteImg = (imageId) => {
     });
 };
 
-//faire la mm chose pour les autres éléments du formulaire :
-const InputTitle = document.getElementById("title");
-InputTitle.addEventListener("keyup", () => {
-  validateForm();
-});
-const InputCategory = document.getElementById("category");
-InputCategory.addEventListener("keyup", () => {
-  validateForm();
-});
-const InputImage = document.getElementById("imageInput");
-InputImage.addEventListener("change", () => {
-  validateForm();
-});
 
 //Fait apparaître l'image ajoutée dans la modale :
-//récupère input file
-const imgInput = InputImage;
 //"change" éxécute une fonction lorsque l'user séléctionne un nouveau fichier
-imgInput.addEventListener("change", (event) => {
+InputImage.addEventListener("change", (event) => {
   //récupère le premier fichier sélectionné par l'utilisateur à partir de l'événement "change"
   //si aucun fichier n'est sélectionné, "file" sera null
   const file = event.target.files[0];
-
   //si un fichier est sélectionné, on exécute le code :
   if (file) {
     //permet de lire le contenu des fichiers :
     const reader = new FileReader();
-
     //éxécute function lorsque le chargement du fichier est fini
     //on donne les données du fichier chargé à event(e):
     reader.onload = function (e) {
@@ -99,11 +87,23 @@ imgInput.addEventListener("change", (event) => {
   }
   //vérifie la validité du formulaire après la sélection d'une image
   validateForm();
-  //réinitialise l'élément imageInput pour effacer le fichier sélectionné
+  console.log("vérification img form ok");
+
 });
 
+//permet de vérifier le formulaire avant de l'envoyer :
+InputTitle.addEventListener("keyup", () => {
+  validateForm();
+  console.log("vérification keyup ok");
+});
+InputCategory.addEventListener("keyup", () => {
+  validateForm();
+  console.log("vérification keyup ok");
+
+});
+
+
 // ajouter des travaux depuis le desktop :
-const Btn_Valider = document.getElementById("Btn_Valider");
 Btn_Valider.addEventListener("click", () => {
   if (validateForm()) {
     const Newtitle = InputTitle.value;
@@ -138,10 +138,11 @@ Btn_Valider.addEventListener("click", () => {
       .catch((error) => {
         console.error("Erreur pendant le chargement:", error);
       });
+      console.log("vérification d'ajout image ok");
   }
 });
 
-//permet de vérifier le formulaire avant de l'envoyer :
+
 function validateForm() {
   const title = InputTitle.value;
   const category = InputCategory.value;
@@ -156,8 +157,9 @@ function validateForm() {
   } else {
     //vérifie si le champ de l'img est rempli et avec une image valide :
     Btn_Valider.classList.add("valider-ajout_active");
+    console.log("vérification validateForm ok");
     return true;
   }
+  
+
 }
-
-
