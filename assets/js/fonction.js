@@ -1,4 +1,5 @@
-//partie affichage des images :
+//partie récupération & affichage des images :
+
 const getWorks = () => {
   fetch("http://localhost:5678/api/works")
     .then((response) => response.json())
@@ -34,8 +35,8 @@ const displayWorks = (works) => {
   });
 };
 
-//partie création des catégories :
 
+//partie récupération des catégories :
 const getCategories = () => {
   fetch("http://localhost:5678/api/categories")
     .then((response) => response.json())

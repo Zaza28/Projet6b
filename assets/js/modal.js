@@ -101,7 +101,7 @@ InputCategory.addEventListener("change", () => {
 });
 
 // Tableau des ajouts options dynamiques : 
-const newOptions = [
+const options = [
   {value: "0"},
   { value: "1", text: "Objets" },
   { value: "2", text: "Appart" },
@@ -109,7 +109,7 @@ const newOptions = [
 ];
 
 // Ajouter les options à la balise select : 
-newOptions.forEach(option => {
+options.forEach(option => {
   const newOption = document.createElement("option");
   newOption.value = option.value;
   newOption.textContent = option.text;
