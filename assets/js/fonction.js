@@ -43,6 +43,7 @@ const getCategories = () => {
     .then((data) => {
       const category = data;
       displayCategories(category);
+      displayOptionsCategories(category);
     });
 };
 
@@ -91,7 +92,6 @@ const displayCategories = (category) => {
       const worksOfCategory = works.filter((work) => {
         return work.categoryId === categoryId;
       });
-
       displayWorks(worksOfCategory);
     });
   });
@@ -99,11 +99,13 @@ const displayCategories = (category) => {
 getWorks();
 getCategories();
 
-// user connected : 
+// fonction pour connecter l'user : 
 function isLogin  () {
   return sessionStorage.getItem("token") ? true : false;
 };
 
+//déconnecte l'user et le re dirige vers
+// la page principale en mode déconnecté:
 const logOut = () => {
   return sessionStorage.clear();
   window.location.href = "./";

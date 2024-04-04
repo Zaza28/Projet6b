@@ -10,11 +10,10 @@ const password = document.getElementById("password").value;
       alert("Veuillez remplir tous les champs du formulaire de connexion.");
       return false;
   }
-
   return true;
 }
 
-    // Envoi de la requête de connexion si le formulaire est valide :
+// Envoi de la requête de connexion si le formulaire est valide :
 
 const connectBtn = document.querySelector("#connectBtn");
 //récupère le token :
@@ -42,7 +41,8 @@ connectBtn.addEventListener("click", function () {
         const token = sessionStorage.getItem("token", data.token);
         console.log("token récupéré", token);
 
-        //renvoie vers la page principale une fois la connexion réussit :
+        //renvoie vers la page principale avec les fonctionnalités de l'user connecté
+        // une fois la connexion réussit :
         window.location.href = "./";
       } else {
         //affiche une alert si les info de co sont incorrect : 

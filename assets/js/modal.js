@@ -100,21 +100,25 @@ InputCategory.addEventListener("change", () => {
   console.log("vérification change ok");
 });
 
-// Tableau des ajouts options dynamiques : 
-const options = [
-  {value: "0"},
-  { value: "1", text: "Objets" },
-  { value: "2", text: "Appart" },
-  { value: "3", text: "hotel & restaurants" },
-];
 
-// Ajouter les options à la balise select : 
-options.forEach(option => {
+//  Création & récupération des options pour le form d'ajout : 
+const displayOptionsCategories = (category)=>{
+  console.log(category);
+
+  //creation de la première option null :
   const newOption = document.createElement("option");
-  newOption.value = option.value;
-  newOption.textContent = option.text;
+  newOption.value="0";
+  newOption.textContent="";
   InputCategory.appendChild(newOption);
+
+ //creation des autres options :
+ category.forEach((option) => {
+  const newOptions = document.createElement("option");
+  newOptions.value = option.id;
+  newOptions.textContent = option.name;
+  InputCategory.appendChild(newOptions);
 });
+}
 
 // ajouter des travaux depuis le desktop :
 Btn_Valider.addEventListener("click", () => {
