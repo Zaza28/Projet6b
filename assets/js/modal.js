@@ -4,10 +4,9 @@ const InputCategory = document.getElementById("category");
 const InputImage = document.getElementById("imageInput");
 const Btn_Valider = document.getElementById("Btn_Valider");
 
-// fonction pour afficher les travaux dans la modale :
+// créer les éléments et récupère les travaux pour les affichés dans la modale :
 const displayWorksInModal = (works) => {
   const galleryContent = document.getElementById("gallery-content");
-
   galleryContent.innerHTML = "";
 
   works.forEach((work) => {
@@ -31,15 +30,14 @@ const displayWorksInModal = (works) => {
       }
     });
 
-    //ajout du style aux images ::
-    // Append image de modale-gallery
+    //ajout des éléments au parent :
     cardImg.appendChild(image);
     cardImg.appendChild(trashIcon);
     galleryContent.appendChild(cardImg);
   });
 };
 
-//supprimer les travaux depuis l'api :
+//supprimer les travaux depuis l'api  :
 const deleteImg = (imageId) => {
   fetch(`http://localhost:5678/api/works/${imageId}`, {
     method: "DELETE",
@@ -48,7 +46,7 @@ const deleteImg = (imageId) => {
       Authorization: "Bearer " + sessionStorage.getItem("token"),
     },
   })
-    //pas beosin de response.json car pas de format json à traduire :
+    //pas besoin de response.json car pas de format json à traduire :
     .then((data) => {
       console.log("image supprimer", data);
       getWorks();
@@ -58,28 +56,23 @@ const deleteImg = (imageId) => {
     });
 };
 
-//Fait apparaître l'image ajoutée dans la modale :
-//"change" éxécute une fonction lorsque l'user séléctionne un nouveau fichier
+//Fait apparaître l'image ajoutée dans le formulaire d'ajout :
 InputImage.addEventListener("change", (event) => {
   //récupère le premier fichier sélectionné par l'utilisateur à partir de l'événement "change"
-  //si aucun fichier n'est sélectionné, "file" sera null
   const file = event.target.files[0];
   //si un fichier est sélectionné, on exécute le code :
-  if (file){
-    //permet de lire le contenu des fichiers :
+  if (file) {
     const reader = new FileReader();
-    //éxécute function lorsque le chargement du fichier est fini
-    //on donne les données du fichier chargé à event(e):
-    reader.onload = function (e){
+    reader.onload = function (e) {
       const img = document.createElement("img");
       img.classList.add("picture");
-      //définit src de l'img en utilisant les données converties de l'URL:
+      //définit la src de l'img en utilisant les données converties de l'URL:
       img.src = e.target.result;
       const preventImg = document.querySelector(".prevent-img");
-      //efface les éléments existants :
+      //efface les éléments existants pour afficher la nouvelle img  :
       preventImg.innerHTML = "";
       preventImg.appendChild(img);
-     document.getElementById("add-picture-icon").style.display="none";
+      document.getElementById("add-picture-icon").style.display = "none";
     };
     //convertit l'URL en données :
     reader.readAsDataURL(file);
@@ -89,8 +82,7 @@ InputImage.addEventListener("change", (event) => {
   console.log("vérification img form ok");
 });
 
-
-//permet de vérifier le formulaire avant de l'envoyer :
+//permet de vérifier les champs du formulaire avant de l'envoyer :
 InputTitle.addEventListener("keyup", () => {
   validateForm();
   console.log("vérification keyup ok");
@@ -100,25 +92,22 @@ InputCategory.addEventListener("change", () => {
   console.log("vérification change ok");
 });
 
-
-//  Création & récupération des options pour le form d'ajout : 
-const displayOptionsCategories = (category)=>{
+//  Création & récupération des options pour le formulaire d'ajout :
+const displayOptionsCategories = (category) => {
   console.log(category);
-
   //creation de la première option null :
   const newOption = document.createElement("option");
-  newOption.value="0";
-  newOption.textContent="";
+  newOption.value = "0";
+  newOption.textContent = "";
   InputCategory.appendChild(newOption);
-
- //creation des autres options :
- category.forEach((option) => {
-  const newOptions = document.createElement("option");
-  newOptions.value = option.id;
-  newOptions.textContent = option.name;
-  InputCategory.appendChild(newOptions);
-});
-}
+  //creation des autres options :
+  category.forEach((option) => {
+    const newOptions = document.createElement("option");
+    newOptions.value = option.id;
+    newOptions.textContent = option.name;
+    InputCategory.appendChild(newOptions);
+  });
+};
 
 // ajouter des travaux depuis le desktop :
 Btn_Valider.addEventListener("click", () => {
@@ -126,13 +115,10 @@ Btn_Valider.addEventListener("click", () => {
     const Newtitle = InputTitle.value;
     const Newcategory = InputCategory.value;
     const Newimage = InputImage.files[0];
-    //formdata transmet les données de type binaires vers le backend
-    //envoie la photo vers le backend tous les fichier upload
     const addData = new FormData();
     addData.append("image", Newimage);
     addData.append("title", Newtitle);
     addData.append("category", parseInt(Newcategory));
-    //*1 converti en valeur numé ou utiliser parseInt(NewCetgory)
     //récupère l'autorisation de l'api
     fetch("http://localhost:5678/api/works", {
       method: "POST",
@@ -147,37 +133,38 @@ Btn_Valider.addEventListener("click", () => {
         console.log("Upload réussi:", data);
         alert("votre image a été ajouté avec succées ! ");
         getWorks();
-      const uploadForm = document.getElementById("uploadForm");
-       uploadForm.reset(); //faire dispaitre l'image de l'aperçu
-       const preventImg = document.querySelector(".prevent-img");
-       preventImg.innerHTML = "";
-      document.getElementById("add-picture-icon").style.display="block";
-    })
+        const uploadForm = document.getElementById("uploadForm");
+        //reset le formulaire après l'envoie :
+        uploadForm.reset();
+        const preventImg = document.querySelector(".prevent-img");
+        preventImg.innerHTML = "";
+        document.getElementById("add-picture-icon").style.display = "block";
+      })
       .catch((error) => {
         console.error("Erreur pendant le chargement:", error);
       });
-      console.log("vérification d'ajout image ok");
+    console.log("vérification d'ajout image ok");
   }
   Btn_Valider.classList.remove("valider-ajout_active");
 });
 
+// fonction vérification de validation du formulaire :
 function validateForm() {
   const title = InputTitle.value;
   const category = InputCategory.value;
   const imageInput = InputImage;
   const msgErreur = document.querySelector(".Erreur-msg");
-  // Vérifie si l'élément imageInput existe avant d'accéder à sa propriété files
+  // Vérifie si l'élément imageInput existe avant d'accéder à sa propriété files :
   const image = imageInput ? imageInput.files[0] : null;
   const Btn_Valider = document.getElementById("Btn_Valider");
-  //vérifie si les champs si les sont vides :
+  //vérifie si les champs de saisis sont vides :
   if (title.trim() === "" || category === "0" || !image) {
-    msgErreur.style.display="block";
+    msgErreur.style.display = "block";
     Btn_Valider.disabled = true;
     Btn_Valider.classList.remove("valider-ajout_active");
     return false;
   } else {
-    //vérifie si le champ de l'img est rempli et avec une image valide :
-    msgErreur.style.display="none";
+    msgErreur.style.display = "none";
     Btn_Valider.disabled = false;
     Btn_Valider.classList.add("valider-ajout_active");
     console.log("vérification validateForm ok");

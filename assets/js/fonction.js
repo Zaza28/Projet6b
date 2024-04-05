@@ -35,8 +35,7 @@ const displayWorks = (works) => {
   });
 };
 
-
-//partie récupération des catégories :
+//partie récupération des catégories depuis le backend :
 const getCategories = () => {
   fetch("http://localhost:5678/api/categories")
     .then((response) => response.json())
@@ -48,17 +47,17 @@ const getCategories = () => {
 };
 
 //fonction qui permet de donner la classe actif au btn séléctionné :
- function customForEach(elements, className, addClass){
-  elements.forEach((element)=>{
-    if (addClass){
+function customForEach(elements, className, addClass) {
+  elements.forEach((element) => {
+    if (addClass) {
       element.classList.add(className);
-    }else{
+    } else {
       element.classList.remove(className);
     }
   });
- }
+}
 
-
+//creation des boutons de filtrage par catégorie :
 const displayCategories = (category) => {
   const categoryBtns = document.querySelector(".categoryBtns");
   categoryBtns.innerHTML = "";
@@ -71,8 +70,12 @@ const displayCategories = (category) => {
 
   firstBtn.addEventListener("click", () => {
     displayWorks(works);
-   customForEach(categoryBtns.querySelectorAll("button"),"button_actif", false);
-   firstBtn.classList.add("button_actif");
+    customForEach(
+      categoryBtns.querySelectorAll("button"),
+      "button_actif",
+      false
+    );
+    firstBtn.classList.add("button_actif");
   });
 
   category.forEach((cat) => {
@@ -85,7 +88,11 @@ const displayCategories = (category) => {
     buttons.classList.add("button");
 
     buttons.addEventListener("click", () => {
-      customForEach(categoryBtns.querySelectorAll("button"), "button_actif", false);
+      customForEach(
+        categoryBtns.querySelectorAll("button"),
+        "button_actif",
+        false
+      );
       buttons.classList.add("button_actif");
       firstBtn.classList.remove("button_actif");
 
@@ -98,17 +105,5 @@ const displayCategories = (category) => {
 };
 getWorks();
 getCategories();
-
-// fonction pour connecter l'user : 
-function isLogin  () {
-  return sessionStorage.getItem("token") ? true : false;
-};
-
-//déconnecte l'user et le re dirige vers
-// la page principale en mode déconnecté:
-const logOut = () => {
-  return sessionStorage.clear();
-  window.location.href = "./";
-};
 
 

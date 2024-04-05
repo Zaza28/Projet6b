@@ -147,7 +147,7 @@ body {
 
 /************** barre d'édition **************/
 .barre_edition {
-	display: flex;
+	/* display: block; */
 	width: 100%;
 	height: 55px;
 	background-color: black;
