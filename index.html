@@ -27,7 +27,7 @@
 				<li>projets</li>
 				<li>contact Me</li>
 				<li><a id="logInBtn" href="./login.html" target="_blank">login</a></li>
-				<li><a id="logOutBtn" href="./login.html" >log Out</a></li>
+				<li><a href="./login.html" id="logOutBtn">log Out</a></li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
@@ -58,7 +58,7 @@
 
 			<div id="modale">
 
-				<div id="modale-gallery">	
+				<div id="modale-gallery">
 
 					<span class="close">&times;</span>
 					<h2 class="modale-title">Galerie photo</h2>
@@ -80,33 +80,34 @@
 
 					<div id="form-content">
 
-                    <form  id="uploadForm" action="#" method="post" enctype="multipart/form-data">
-					
-						<label id="upload-Img" for="imageInput" >
-						<div id="add-picture-icon">
-							<i class="fa-regular fa-image"></i>
-							<label for="imageInput" class="add-picture">+ Ajouter photo</label>
-                           <p class="modaleform_text">jpg, png : 4mo max</p>
-						</div>
-						<div class="prevent-img">
-						</div>
-					</label>
-			
-					
-					<input type="file" id="imageInput" accept="image/*">
-					<label for="title" class="title-formulaire">Titre</label>
-					 <input type="text" title="title" id="title" autocomplete="on">
-					 <label for="category" class="title-category">Catégorie</label>
-					 <select name="" id="category" autocomplete="on">
-					 </select>
-					 <hr class="form-bottom-line">
-					 <p class="Erreur-msg">Vérifier que toutes les données soient saisis</p>
-					 <span class="Btn-valider">	
-						<button type="button" id="Btn_Valider" disabled="true" class="valider-ajout">Valider</button>
-						</span>
-                    </form>
+						<form id="uploadForm" action="#" method="post" enctype="multipart/form-data">
+
+							<label id="upload-Img" for="imageInput">
+								<div id="add-picture-icon">
+									<i class="fa-regular fa-image"></i>
+									<label for="imageInput" class="add-picture">+ Ajouter photo</label>
+									<p class="modaleform_text">jpg, png : 4mo max</p>
+								</div>
+								<div class="prevent-img">
+								</div>
+							</label>
+
+
+							<input type="file" id="imageInput" accept="image/*">
+							<label for="title" class="title-formulaire">Titre</label>
+							<input type="text" title="title" id="title" autocomplete="on">
+							<label for="category" class="title-category">Catégorie</label>
+							<select name="" id="category" autocomplete="on">
+							</select>
+							<hr class="form-bottom-line">
+							<p class="Erreur-msg">Vérifier que toutes les données soient saisis</p>
+							<span class="Btn-valider">
+								<button type="button" id="Btn_Valider" disabled="true"
+									class="valider-ajout">Valider</button>
+							</span>
+						</form>
 					</div>
-					
+
 				</div>
 
 			</div>

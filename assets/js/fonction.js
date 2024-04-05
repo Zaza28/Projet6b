@@ -106,4 +106,13 @@ const displayCategories = (category) => {
 getWorks();
 getCategories();
 
+// fonction pour connecter l'user :
+function isLogin() {
+  return sessionStorage.getItem("token") ? true : false;
+}
 
+//déconnecte l'user et le re dirige vers la page principale lors de la déconnexion :
+const logOut = () => {
+  window.location.href = "./";
+  return sessionStorage.clear();
+};

@@ -45,4 +45,3 @@ connectBtn.addEventListener("click", function () {
       alert("Une erreur s'est produite lors de la connexion");
     });
 });
-

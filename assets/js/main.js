@@ -5,20 +5,8 @@ const gallery = document.querySelector(".gallery");
 const categoryBtns = document.querySelector(".categoryBtns");
 
 // log in et log out :
-const logInBtn = document.getElementById("#logInBtn");
-const logOutBtn = document.getElementById("#logOutBtn");
-// fonction pour connecter l'user :
-function isLogin() {
-  return sessionStorage.getItem("token") ? true : false;
-}
-
-//déconnecte l'user et le re dirige vers la page principale lors de la déconnexion :
-const logOut = () => {
-  console.log(logOut);
-  window.location.href = "./";
-  return sessionStorage.clear();
-};
-
+const logInBtn = document.querySelector("#logInBtn");
+const logOutBtn = document.querySelector("#logOutBtn");
 logOutBtn.addEventListener("click", () => {
   logOut();
 });
@@ -46,22 +34,22 @@ const BtnValider = document.getElementById("Btn_Valider");
 //affiche les éléments de l'user connecté et masqué les autres éléments :
 
 if (isLogged) {
-  //masque les boutons de catégories si déconnecté :
+  //masque les boutons de catégories
   editBar.style.display = "block";
-  categoryBtns.style.display = "none";
-  logOutBtn.style.display = "inline";
+  categoryBtns.style.display = " none";
+  logOutBtn.style.display = " inline";
   logInBtn.style.display = "none";
   btnModif.style.display = "flex";
 } else {
-  //affiche les éléments masqués à l'user connecté :
+  //affiche les éléments masqués de l'user déconnecter :
   editBar.style.display = "none";
-  logOutBtn.style.display = "none";
+  logOutBtn.style.display = " none";
   logInBtn.style.display = "inline";
   btnModif.style.display = "none";
   modale.style.display = "none";
 }
 
-//ouverture de la fenêtre modale lors du click sur btn modifier :
+//ouverture de la fenêtre modale lors du click sur modifier :
 btnModif.addEventListener("click", () => {
   console.log("clicked");
   modale.style.display = "block";
@@ -99,7 +87,7 @@ arrowBack.addEventListener("click", () => {
   closeBtn.style.display = "block";
 });
 
-//click sur la croix du formulaire d'ajout pour fermer la modale
+//click sur la croix du formulaire d'ajout pour fermer la modale :
 closeBtnForm.addEventListener("click", () => {
   console.log("button close clicked");
   modale.style.display = "none";

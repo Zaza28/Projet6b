@@ -30,7 +30,7 @@ const displayWorksInModal = (works) => {
       }
     });
 
-    //ajout des éléments au parent :
+    //ajout des éléments aux parents :
     cardImg.appendChild(image);
     cardImg.appendChild(trashIcon);
     galleryContent.appendChild(cardImg);
@@ -57,8 +57,9 @@ const deleteImg = (imageId) => {
 };
 
 //Fait apparaître l'image ajoutée dans le formulaire d'ajout :
+
+//récupère le premier fichier sélectionné par l'utilisateur à partir de l'événement "change"
 InputImage.addEventListener("change", (event) => {
-  //récupère le premier fichier sélectionné par l'utilisateur à partir de l'événement "change"
   const file = event.target.files[0];
   //si un fichier est sélectionné, on exécute le code :
   if (file) {
@@ -77,7 +78,6 @@ InputImage.addEventListener("change", (event) => {
     //convertit l'URL en données :
     reader.readAsDataURL(file);
   }
-  //vérifie la validité du formulaire après la sélection d'une image
   validateForm();
   console.log("vérification img form ok");
 });
